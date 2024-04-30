@@ -38,7 +38,7 @@ public class DoctorController {
         }
     }
 
-    @GetMapping("/patiets/doctorstatusoff")
+    @GetMapping("/patients/doctorstatusoff")
     @ResponseStatus(HttpStatus.OK)
     public List<Patient> getPatientsWithDoctorHavingStatusOff() {
         return doctorService.getPatientsWithDoctorHavingStatusOff();

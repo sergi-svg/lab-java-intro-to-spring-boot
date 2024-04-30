@@ -1,5 +1,6 @@
 package dev.svg.ih.repositories;
 
+import dev.svg.ih.model.Doctor;
 import dev.svg.ih.model.Patient;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -9,8 +10,8 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
 
     List<Patient> findByDateOfBirth(String dateOfBirth);
 
-    List<Patient> findPatientsByAdmittedBy(int admittedBy);
+    List<Patient> findPatientsByDoctor(Doctor doctor);
 
-    List<Patient> findByDateOfBirthAndAdmittedBy(String dateOfBirth, int doctor);
+    List<Patient> findByDateOfBirthAndDoctor(String dateOfBirth, Doctor doctor);
 
 }

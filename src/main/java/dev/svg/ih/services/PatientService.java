@@ -1,5 +1,6 @@
 package dev.svg.ih.services;
 
+import dev.svg.ih.model.Doctor;
 import dev.svg.ih.model.Patient;
 import dev.svg.ih.repositories.PatientRepository;
 import org.springframework.stereotype.Service;
@@ -28,12 +29,12 @@ public class PatientService {
         return patientRepository.findByDateOfBirth(dateOfBirth);
     }
 
-    public List<Patient> getPatientsByAdmittedBy(String admittedBy) {
-        return patientRepository.findPatientsByAdmittedBy(Integer.parseInt(admittedBy));
+    public List<Patient> getPatientsByDoctor(Doctor doctor) {
+        return patientRepository.findPatientsByDoctor(doctor);
     }
 
-    public List<Patient> getPatientsByDateOfBirthAndAdmittedBy(String dateOfBirth, String admittedBy) {
-        return patientRepository.findByDateOfBirthAndAdmittedBy(dateOfBirth, Integer.parseInt(admittedBy));
+    public List<Patient> getPatientsByDateOfBirthAndDoctor(String dateOfBirth, Doctor doctor) {
+        return patientRepository.findByDateOfBirthAndDoctor(dateOfBirth, doctor);
     }
 
 }

@@ -1,5 +1,6 @@
 package dev.svg.ih.controllers;
 
+import dev.svg.ih.model.Doctor;
 import dev.svg.ih.model.Patient;
 import dev.svg.ih.services.PatientService;
 import org.springframework.http.HttpStatus;
@@ -25,13 +26,13 @@ public class PatientController {
 
     @GetMapping("/patients")
     @ResponseStatus(HttpStatus.OK)
-    public List<Patient> getPatients(@RequestParam Optional<String> dateOfBirth, @RequestParam Optional<String> admittedBy) {
-        if (dateOfBirth.isPresent() && admittedBy.isPresent()) {
-            return patientService.getPatientsByDateOfBirthAndAdmittedBy(dateOfBirth.get(), admittedBy.get());
+    public List<Patient> getPatients(@RequestParam Optional<String> dateOfBirth, @RequestParam Optional<Doctor> doctor) {
+        if (dateOfBirth.isPresent() && doctor.isPresent()) {
+            return patientService.getPatientsByDateOfBirthAndDoctor(dateOfBirth.get(), doctor.get());
         } else if (dateOfBirth.isPresent()) {
             return patientService.getPatientsByDateOfBirth(dateOfBirth.get());
-        } else if (admittedBy.isPresent()) {
-            return patientService.getPatientsByAdmittedBy(admittedBy.get());
+        } else if (doctor.isPresent()) {
+            return patientService.getPatientsByDoctor(doctor.get());
         } else {
             return patientService.getAllPatients();
         }
